@@ -1,6 +1,3 @@
 spring:
   profiles:
     active: dev
-mybatis:
-  configuration:
-    mapUnderscoreToCamelCase: true
