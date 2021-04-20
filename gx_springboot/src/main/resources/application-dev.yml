@@ -29,9 +29,9 @@ logging:
       example:
         mapper : debug
 
-# pageHelper分页配置
-  pagehelper:
-  helper-dialect: mysql
+#mybatis分页插件配置
+pagehelper:
+  helper-dialect: mysql  #数据库
   reasonable: true
   support-methods-arguments: true
   params: count=countSql

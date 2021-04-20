@@ -3,7 +3,7 @@ package com.example.controller;
 import com.example.entity.User;
 import com.example.service.UserService;
 import com.example.utils.resultFormat.Result;
-import com.example.utils.resultFormat.ResultUtil;
+import com.github.pagehelper.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +20,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/getUserById/{id}")
-    public User getUserById(@PathVariable int id) {
+    public Result<User> getUserById(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
@@ -29,9 +29,10 @@ public class UserController {
      * @param
      * @return
      */
-    @GetMapping("/getUserList")
-    public Result<User> getUserList() {
-        return ResultUtil.success(userService.getUserList());
+    @GetMapping("/getAllUser")
+    public PageResult<User> getAllUser() {
+        PageResult<User> userList = userService.getAllUser();
+        return userList;
     }
     /**
      * 通用mapper条件查询
@@ -39,7 +40,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/getUserById")
-    public User getUserInfo(@RequestBody User user) {
+    public Result<User>  getUserInfo(@RequestBody User user) {
         return userService.getUserInfo(user);
     }
     /**
@@ -48,7 +49,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/insertUser")
-    public Integer insertUser(@RequestBody User user) {
+    public Result<Integer> insertUser(@RequestBody User user) {
         return userService.insertUser(user);
     }
     /**
@@ -57,7 +58,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/updataUserInfo")
-    public Integer updataUserInfo(@RequestBody User user) {
+    public Result<Integer> updataUserInfo(@RequestBody User user) {
         return userService.updataUserInfo(user);
     }
 
@@ -67,7 +68,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/deleteUserInfo")
-    public Integer deleteUserInfo(@RequestBody User user) {
+    public Result<Integer> deleteUserInfo(@RequestBody User user) {
         return userService.deleteUserInfo(user);
     }
 }
