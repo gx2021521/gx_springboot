@@ -2,10 +2,10 @@ package com.example.controller;
 
 import com.example.entity.User;
 import com.example.service.UserService;
+import com.example.utils.resultFormat.Result;
+import com.example.utils.resultFormat.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -30,8 +30,8 @@ public class UserController {
      * @return
      */
     @GetMapping("/getUserList")
-    public List<User> getUserList() {
-        return userService.getUserList();
+    public Result<User> getUserList() {
+        return ResultUtil.success(userService.getUserList());
     }
     /**
      * 通用mapper条件查询
