@@ -4,11 +4,14 @@ import com.example.entity.User;
 import com.example.service.UserService;
 import com.example.utils.resultFormat.Result;
 import com.github.pagehelper.PageResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
+@Api("User接口")
 public class UserController {
 
     @Autowired
@@ -19,6 +22,9 @@ public class UserController {
      * @param id
      * @return
      */
+
+
+    @ApiOperation("根据用户id获取用户信息")
     @RequestMapping("/getUserById/{id}")
     public Result<User> getUserById(@PathVariable int id) {
         return userService.getUserById(id);
@@ -29,6 +35,7 @@ public class UserController {
      * @param
      * @return
      */
+    @ApiOperation("通用mapper查询全部用户信息")
     @GetMapping("/getAllUser")
     public PageResult<User> getAllUser() {
         PageResult<User> userList = userService.getAllUser();
@@ -39,6 +46,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation("通用mapper条件查询查询用户信息")
     @PostMapping("/getUserById")
     public Result<User>  getUserInfo(@RequestBody User user) {
         return userService.getUserInfo(user);
@@ -48,6 +56,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation("通用mapper新增用户信息")
     @PostMapping("/insertUser")
     public Result<Integer> insertUser(@RequestBody User user) {
         return userService.insertUser(user);
@@ -57,6 +66,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation("通用mapper更新用户信息")
     @PostMapping("/updataUserInfo")
     public Result<Integer> updataUserInfo(@RequestBody User user) {
         return userService.updataUserInfo(user);
@@ -67,6 +77,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation("通用mapper删除用户信息")
     @PostMapping("/deleteUserInfo")
     public Result<Integer> deleteUserInfo(@RequestBody User user) {
         return userService.deleteUserInfo(user);
