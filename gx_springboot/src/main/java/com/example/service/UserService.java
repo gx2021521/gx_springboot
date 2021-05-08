@@ -6,7 +6,10 @@ import com.github.pagehelper.PageResult;
 
 public interface UserService {
 
-    Result<User> getUserById(int id);
+    User getUserById(String id);
+    //根据用户名查询信息
+    User getInfoByUsername(User user);
+
     /**通用mapper查询全部*/
     PageResult<User> getAllUser();
     /**通用mapper条件查询*/
@@ -17,4 +20,6 @@ public interface UserService {
     Result<Integer> updataUserInfo(User user);
     /**通用mapper删除*/
     Result<Integer> deleteUserInfo(User user);
+
+
 }

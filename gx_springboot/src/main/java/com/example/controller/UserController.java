@@ -23,10 +23,9 @@ public class UserController {
      * @return
      */
 
-
     @ApiOperation("根据用户id获取用户信息")
     @RequestMapping("/getUserById/{id}")
-    public Result<User> getUserById(@PathVariable int id) {
+    public User getUserById(@PathVariable String id) {
         return userService.getUserById(id);
     }
 

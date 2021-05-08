@@ -16,14 +16,20 @@ import java.util.List;
  * @author admin
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl
+        implements UserService {
     @Autowired
     UserMapper userMapper;
 
     @Override
-    public Result<User> getUserById(int id) {
+    public User getUserById(String id) {
         User userInfo = userMapper.getUserById(id);
-        return ResultUtil.success(userInfo);
+        return userInfo;
+    }
+
+    @Override
+    public User getInfoByUsername(User user) {
+        return userMapper.getInfoByUsername(user);
     }
 
     /**通用mapper查询全部*/

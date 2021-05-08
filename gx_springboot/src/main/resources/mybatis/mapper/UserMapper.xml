@@ -4,13 +4,17 @@
 
     <resultMap id="User" type="com.example.entity.User">
         <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="userName" jdbcType="VARCHAR" property="userName" />
-        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
-        <result column="realName" jdbcType="VARCHAR" property="realName" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="password" jdbcType="VARCHAR" property="passWord" />
+        <result column="real_name" jdbcType="VARCHAR" property="realName" />
     </resultMap>
 
     <select id="getUserById" resultMap="User" >
-        select * from user where id = #{id}
+        select * from t_user where id = #{id}
+    </select>
+
+    <select id="getInfoByUsername" resultMap="User">
+        select * from t_user where user_name = #{user.userName}
     </select>
 
 </mapper>
